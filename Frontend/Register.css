@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+
+    background: linear-gradient(135deg, #059669, #2563eb);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* =========================
+   LOGO
+========================= */
+
+.logo-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.logo-circle {
+
+    width: 80px;
+    height: 80px;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 34px;
+
+    box-shadow:
+        0 10px 25px rgba(34,197,94,0.35);
+
+    transition: 0.3s;
+}
+
+.logo-circle:hover {
+
+    transform: scale(1.05);
+}
+
+/* CENTER BOX */
+.register-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-box {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+
+    width: 360px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* TITLE */
+.register-box h2 {
+    color: #047857;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+.register-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+
+    border: 1px solid #ccc;
+    border-radius: 8px;
+
+    outline: none;
+    transition: 0.3s;
+}
+
+.register-box input:focus {
+    border-color: #059669;
+    box-shadow: 0 0 5px rgba(5,150,105,0.5);
+}
+
+/* BUTTON */
+.register-box button {
+    width: 100%;
+    padding: 12px;
+
+    background: #059669;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.register-box button:hover {
+    background: #047857;
+}
+
+/* LOGIN LINK */
+.login-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* =========================
+   MESSAGE BOX
+========================= */
+
+.message {
+
+    margin-top: 15px;
+
+    min-height: 20px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.success {
+
+    color: #22c55e;
+}
+
+.error {
+
+    color: #ef4444;
+}

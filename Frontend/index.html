@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Tax Calculation System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         AUTH CHECK
+    ========================= -->
+    <script>
+        const token = sessionStorage.getItem("token");
+
+        if (!token || token === "null" || token.trim() === "") {
+            window.location.href = "login.html";
+        }
+    </script>
+
+
+    <!-- =========================
+         MAIN LAYOUT
+    ========================= -->
+    <div class="main-container">
+
+        <!-- =========================
+             LEFT HISTORY PANEL
+        ========================= -->
+        <div class="history-panel">
+
+            <div class="history-header">
+                <h2>💬 Tax History</h2>
+                <button
+                class="clear-history-btn"
+                onclick="clearHistory()">
+
+                Clear History
+
+                </button>
+            </div>
+
+            <div id="historyList">
+
+                <div class="history-item empty">
+                    No calculations yet
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =========================
+             CENTER CALCULATOR
+        ========================= -->
+        <div class="calculator-container">
+
+            <div class="hero-header">
+
+                <h1>AI-Based Tax Calculator</h1>
+
+                <p class="subtitle">
+                    Compare Old Regime vs New Regime (FY 2026-27)
+                </p>
+
+            </div>
+
+            <div class="form-container">
+
+                <input
+                        type="number"
+                        id="income"
+                        placeholder="Enter Annual Income">
+
+                <input
+                        type="number"
+                        id="deduction80C"
+                        placeholder="80C Deduction">
+
+                <input
+                        type="number"
+                        id="deduction80D"
+                        placeholder="80D Deduction">
+
+                <input
+                        type="number"
+                        id="hraExemption"
+                        placeholder="HRA Exemption">
+
+                <button
+                        class="calc-btn"
+                        onclick="calculateTax()">
+
+                    Calculate Tax
+
+                </button>
+
+            </div>
+
+            <!-- =========================
+                 TAX RESULTS
+            ========================= -->
+            <div class="results-container">
+
+                <h2>Tax Comparison</h2>
+
+                <div class="regime-box">
+
+                    <div class="tax-card old-tax">
+
+                        <h3>Old Regime</h3>
+
+                        <div id="oldTax">
+                            ₹ 0.00
+                        </div>
+
+                    </div>
+
+                    <div class="tax-card new-tax">
+
+                        <h3>New Regime</h3>
+
+                        <div id="newTax">
+                            ₹ 0.00
+                        </div>
+
+                    </div>
+
+                </div>
+                <p class="tax-note">
+                * Tax calculations include 4% Health & Education Cess
+                </p>
+            </div>
+
+        </div>
+
+        <!-- =========================
+             RIGHT AI PANEL
+        ========================= -->
+        <div class="ai-panel">
+
+    <div class="ai-header">
+
+        <h2>🤖 AI Tax Advisor</h2>
+
+        <button class="logout-btn"
+                onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+            <!-- SCORE -->
+            <div class="score-box">
+
+                <h3>Tax Efficiency Score</h3>
+
+                <div id="taxScore">
+                    0 / 100
+                </div>
+
+            </div>
+
+            <!-- AI INSIGHTS -->
+            <div class="ai-box">
+
+                <h3>AI Insights</h3>
+
+                <div id="suggestion">
+
+                    Enter income details and click
+                    <b>Calculate Tax</b>
+                    to get personalized AI recommendations.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+         JAVASCRIPT FILES
+    ========================= -->
+    <script src="tax.js"></script>
+    <script src="logout.js"></script>
+
+</body>
+
+</html>

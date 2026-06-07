@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - AI Tax System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+        
+        <div class="logo-section">
+        <div class="logo-circle">
+        🔐
+        </div>
+        </div>
+
+        <h2>AI-Based Tax Calculation System</h2>
+        <p class="subtitle">Login to continue</p>
+
+        <!-- INPUTS -->
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+
+        <!-- LOGIN BUTTON -->
+        <button onclick="login()">Login</button>
+        <p id="msg" class="message"></p>
+
+        <!-- MESSAGE AREA -->
+        <p id="msg" style="color:red;"></p>
+
+        <!-- LINK TO REGISTER -->
+        <p class="register-link">
+            Don't have an account?
+            <a href="register.html">Register</a>
+        </p>
+
+    </div>
+
+</div>
+
+<!-- JS FILE -->
+<script src="login.js"></script>
+
+</body>
+</html>
