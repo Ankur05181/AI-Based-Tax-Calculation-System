@@ -1,0 +1,372 @@
+/* =========================
+   GLOBAL
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: white;
+    overflow: hidden;
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+.main-container {
+    display: flex;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* =========================
+   LEFT HISTORY PANEL
+========================= */
+.history-panel {
+    width: 280px;
+    background: rgba(17, 24, 39, 0.95);
+    border-radius: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    border: 1px solid #1f2937;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.history-header {
+    margin-bottom: 20px;
+}
+
+.history-header h2 {
+    color: #60a5fa;
+    font-size: 22px;
+}
+.clear-history-btn {
+
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ef4444;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.clear-history-btn:hover {
+
+    background: #dc2626;
+
+    transform: translateY(-2px);
+}
+
+.history-item {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    transform: translateY(-3px);
+    background: #334155;
+}
+
+.history-item.empty {
+    text-align: center;
+    color: #94a3b8;
+}
+
+/* =========================
+   CENTER CALCULATOR
+========================= */
+.calculator-container {
+    flex: 1;
+    background: rgba(17, 24, 39, 0.95);
+    border-radius: 20px;
+    padding: 35px;
+    overflow-y: auto;
+    border: 1px solid #1f2937;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.hero-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.hero-header h1 {
+    font-size: 36px;
+    color: #60a5fa;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+/* =========================
+   FORM
+========================= */
+.form-container {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-container input {
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.form-container input:focus {
+    outline: none;
+    border-color: #60a5fa;
+    box-shadow: 0 0 10px rgba(96,165,250,0.3);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.calc-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+    );
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.calc-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESULTS
+========================= */
+.results-container {
+    margin-top: 40px;
+}
+
+.results-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #60a5fa;
+}
+
+.regime-box {
+    display: flex;
+    gap: 20px;
+}
+.tax-note {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    font-style: italic;
+}
+
+.tax-card {
+    flex: 1;
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.tax-card:hover {
+    transform: translateY(-4px);
+}
+
+.tax-card h3 {
+    margin-bottom: 15px;
+    color: #cbd5e1;
+}
+
+.tax-card div {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.old-tax {
+    border-left: 5px solid #ef4444;
+}
+
+.new-tax {
+    border-left: 5px solid #22c55e;
+}
+
+/* =========================
+   RIGHT AI PANEL
+========================= */
+.ai-panel {
+    width: 340px;
+    background: rgba(17, 24, 39, 0.95);
+    border-radius: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    border: 1px solid #1f2937;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.ai-panel h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #60a5fa;
+}
+
+/* SCORE BOX */
+.score-box {
+    background: linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+    );
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.score-box h3 {
+    margin-bottom: 10px;
+}
+
+#taxScore {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+/* AI INSIGHTS */
+.ai-box {
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.ai-box h3 {
+    margin-bottom: 15px;
+    color: #60a5fa;
+}
+
+#suggestion {
+    line-height: 1.8;
+    color: #e2e8f0;
+}
+
+/* =========================
+   AI HEADER
+========================= */
+.ai-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.ai-header h2{
+    margin:0;
+    color:#60a5fa;
+    font-size:22px;
+}
+
+/* =========================
+   LOGOUT BUTTON
+========================= */
+.logout-btn{
+    background:#ef4444;
+    color:white;
+
+    border:none;
+    border-radius:10px;
+
+    padding:10px 18px;
+
+    font-weight:600;
+    font-size:14px;
+
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.logout-btn:hover{
+    background:#dc2626;
+    transform:translateY(-2px);
+}
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:1200px){
+
+    .main-container{
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+    }
+
+    .history-panel,
+    .ai-panel{
+        width:100%;
+    }
+
+    .regime-box{
+        flex-direction: column;
+    }
+
+    .calculator-container{
+        width:100%;
+    }
+}
