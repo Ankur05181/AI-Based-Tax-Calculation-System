@@ -106,36 +106,38 @@
             ========================= -->
             <div class="results-container">
 
-                <h2>Tax Comparison</h2>
+    <h2>Tax Comparison</h2>
 
-                <div class="regime-box">
+    <div class="regime-box">
 
-                    <div class="tax-card old-tax">
-
-                        <h3>Old Regime</h3>
-
-                        <div id="oldTax">
-                            ₹ 0.00
-                        </div>
-
-                    </div>
-
-                    <div class="tax-card new-tax">
-
-                        <h3>New Regime</h3>
-
-                        <div id="newTax">
-                            ₹ 0.00
-                        </div>
-
-                    </div>
-
-                </div>
-                <p class="tax-note">
-                * Tax calculations include 4% Health & Education Cess
-                </p>
+        <div class="tax-card old-tax">
+            <h3>Old Regime</h3>
+            <div id="oldTax">
+                ₹ 0.00
             </div>
+        </div>
 
+        <div class="tax-card new-tax">
+            <h3>New Regime</h3>
+            <div id="newTax">
+                ₹ 0.00
+            </div>
+        </div>
+
+    </div>
+
+    <p class="tax-note">
+        * Tax calculations include 4% Health & Education Cess
+    </p>
+
+    <button
+        class="pdf-btn"
+        onclick="downloadReport()">
+
+        📄 Download PDF Report
+
+     </button>
+            </div>
         </div>
 
         <!-- =========================
@@ -187,6 +189,7 @@
     <!-- =========================
          JAVASCRIPT FILES
     ========================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="tax.js"></script>
     <script src="logout.js"></script>
 

@@ -345,7 +345,60 @@ body {
     background: #334155;
     border-radius: 20px;
 }
+/* =========================
+   PDF DOWNLOAD BUTTON
+========================= */
 
+.pdf-btn {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #16a34a,
+        #15803d
+    );
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+.pdf-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(
+            22,
+            163,
+            74,
+            0.35
+        );
+
+    background: linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+}
+
+.pdf-btn:active {
+
+    transform: scale(0.98);
+}
 /* =========================
    RESPONSIVE
 ========================= */
