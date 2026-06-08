@@ -107,29 +107,38 @@ document.getElementById("newTax").innerHTML =
             maximumFractionDigits: 2
         });
 
-        // =========================
-        // TAX SCORE
-        // =========================
+         // =========================
+        // ADVANCED TAX EFFICIENCY SCORE
+       // =========================
 
-        let score = 100;
+    const effectiveTaxRate =
+    (Math.min(data.oldTax, data.newTax) / income) * 100;
 
-        if (data.newTax > income * 0.15) {
-            score -= 25;
-        }
+    let score = 100;
 
-        if (deduction80C === 0) {
-            score -= 10;
-        }
+    // Tax burden penalty
+    score -= effectiveTaxRate;
 
-        if (deduction80D === 0) {
-            score -= 5;
-        }
+   // Deduction bonus
+   if (deduction80C > 0) score += 5;
+   if (deduction80D > 0) score += 5;
+   if (hraExemption > 0) score += 5;
 
-        score = Math.max(score, 0);
+   // Tax-saving bonus
+   const taxSaved =
+   Math.abs(data.oldTax - data.newTax);
 
-        document.getElementById("taxScore").innerHTML =
-            score + " / 100";
+   if (taxSaved > 50000) {
+   score += 10;
+   } else if (taxSaved > 25000) {
+   score += 5;
+   }
 
+   // Limit between 0 and 100
+   score = Math.min(100, Math.max(0, Math.round(score)));
+
+   document.getElementById("taxScore").innerText =
+   score + " / 100";
         // =========================
         // INCOME CATEGORY
         // =========================

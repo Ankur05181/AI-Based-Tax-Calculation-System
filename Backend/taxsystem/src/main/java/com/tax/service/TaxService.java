@@ -133,7 +133,7 @@ public class TaxService {
             recommendation =
                     "🟢 New Regime is better.\n" +
                     "Estimated Savings: ₹" +
-                    String.format("%.2f", savings) +
+                    String.format("%,.2f", savings) +
                     "\nIncome Category: " +
                     incomeCategory;
 
@@ -142,7 +142,7 @@ public class TaxService {
             recommendation =
                     "🟡 Old Regime is better.\n" +
                     "Estimated Savings: ₹" +
-                    String.format("%.2f", savings) +
+                    String.format("%,.2f", savings) +
                     "\nIncome Category: " +
                     incomeCategory +
                     "\nYour deductions are beneficial.";
