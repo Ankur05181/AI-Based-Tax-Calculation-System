@@ -114,29 +114,35 @@ document.getElementById("newTax").innerHTML =
 const displayTaxRate =
     (Math.min(data.oldTax, data.newTax) / income) * 100;
 
-let score = 100;
-
-// Tax burden penalty
-score -= displayTaxRate;
+let score = 70;
 
 // Deduction bonus
-if (deduction80C > 0) score += 5;
+if (deduction80C > 0) score += 10;
 if (deduction80D > 0) score += 5;
 if (hraExemption > 0) score += 5;
 
-// Tax-saving bonus
+// Tax saving bonus
 const taxSaved =
     Math.abs(data.oldTax - data.newTax);
 
-if (taxSaved > 50000) {
+if (taxSaved > 100000) {
+
     score += 10;
-} else if (taxSaved > 25000) {
+
+} else if (taxSaved > 50000) {
+
     score += 5;
 }
 
-score = Math.min(
-    100,
-    Math.max(0, Math.round(score))
+// Tax burden penalty
+score -= (displayTaxRate * 1.5);
+
+// Final score
+score = Math.round(
+    Math.min(
+        100,
+        Math.max(0, score)
+    )
 );
 
 document.getElementById("taxScore").innerText =
@@ -415,16 +421,15 @@ window.onload = function () {
 // =========================
 function downloadReport() {
 
-const oldTax =
-        document.getElementById("oldTax").innerText;
+    const oldTax =
+        document.getElementById("oldTax").innerText.trim();
 
     const newTax =
-        document.getElementById("newTax").innerText;
+        document.getElementById("newTax").innerText.trim();
 
-    // Prevent download before calculation
     if (
-        oldTax.includes("0.00") &&
-        newTax.includes("0.00")
+        oldTax === "₹ 0.00" &&
+        newTax === "₹ 0.00"
     ) {
 
         alert(
@@ -438,20 +443,14 @@ const oldTax =
 
     const doc = new jsPDF();
 
-    // =========================
     // USER DETAILS
-    // =========================
-
     const token =
         sessionStorage.getItem("token");
 
     const username =
         getUsernameFromToken(token) || "User";
 
-    // =========================
     // FORM DATA
-    // =========================
-
     const income =
         document.getElementById("income").value || "0";
 
@@ -464,20 +463,21 @@ const oldTax =
     const hraExemption =
         document.getElementById("hraExemption").value || "0";
 
-    // =========================
     // RESULT DATA
-    // =========================
-
     const score =
         document.getElementById("taxScore").innerText;
 
-    const recommendation =
-        document.getElementById("suggestion").innerText;
+    let recommendation =
+    document.getElementById("suggestion")
+    .innerText
+    .replace("AI Recommendation:", "")
+    .replace(/[^\x00-\x7F]/g, "");
 
-    // =========================
-    // PDF HEADER
-    // =========================
+    // Remove emojis and unsupported characters
+    recommendation =
+        recommendation.replace(/[^\x00-\x7F]/g, "");
 
+    // HEADER
     doc.setFontSize(18);
 
     doc.text(
@@ -494,46 +494,40 @@ const oldTax =
         35
     );
 
-    // =========================
     // INPUT DETAILS
-    // =========================
-
     doc.text(
-        `Annual Income: ₹${income}`,
+        `Annual Income: Rs. ${income}`,
         20,
         55
     );
 
     doc.text(
-        `80C Deduction: ₹${deduction80C}`,
+        `80C Deduction: Rs. ${deduction80C}`,
         20,
         65
     );
 
     doc.text(
-        `80D Deduction: ₹${deduction80D}`,
+        `80D Deduction: Rs. ${deduction80D}`,
         20,
         75
     );
 
     doc.text(
-        `HRA Exemption: ₹${hraExemption}`,
+        `HRA Exemption: Rs. ${hraExemption}`,
         20,
         85
     );
 
-    // =========================
     // TAX RESULTS
-    // =========================
-
     doc.text(
-        `Old Regime Tax: ${oldTax}`,
+        `Old Regime Tax: ${oldTax.replace("₹","Rs.")}`,
         20,
         105
     );
 
     doc.text(
-        `New Regime Tax: ${newTax}`,
+        `New Regime Tax: ${newTax.replace("₹","Rs.")}`,
         20,
         115
     );
@@ -544,10 +538,7 @@ const oldTax =
         125
     );
 
-    // =========================
     // AI RECOMMENDATION
-    // =========================
-
     doc.text(
         "AI Recommendation:",
         20,
@@ -566,10 +557,7 @@ const oldTax =
         155
     );
 
-    // =========================
     // FOOTER
-    // =========================
-
     doc.setFontSize(10);
 
     doc.text(
@@ -578,10 +566,7 @@ const oldTax =
         280
     );
 
-    // =========================
-    // SAVE PDF
-    // =========================
-
+    // SAVE
     doc.save(
         `${username}_Tax_Report.pdf`
     );
