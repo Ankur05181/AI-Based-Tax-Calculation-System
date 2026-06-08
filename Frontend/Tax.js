@@ -108,37 +108,39 @@ document.getElementById("newTax").innerHTML =
         });
 
          // =========================
-        // ADVANCED TAX EFFICIENCY SCORE
-       // =========================
+// ADVANCED TAX EFFICIENCY SCORE
+// =========================
 
-    const effectiveTaxRate =
+const displayTaxRate =
     (Math.min(data.oldTax, data.newTax) / income) * 100;
 
-    let score = 100;
+let score = 100;
 
-    // Tax burden penalty
-    score -= effectiveTaxRate;
+// Tax burden penalty
+score -= displayTaxRate;
 
-   // Deduction bonus
-   if (deduction80C > 0) score += 5;
-   if (deduction80D > 0) score += 5;
-   if (hraExemption > 0) score += 5;
+// Deduction bonus
+if (deduction80C > 0) score += 5;
+if (deduction80D > 0) score += 5;
+if (hraExemption > 0) score += 5;
 
-   // Tax-saving bonus
-   const taxSaved =
-   Math.abs(data.oldTax - data.newTax);
+// Tax-saving bonus
+const taxSaved =
+    Math.abs(data.oldTax - data.newTax);
 
-   if (taxSaved > 50000) {
-   score += 10;
-   } else if (taxSaved > 25000) {
-   score += 5;
-   }
+if (taxSaved > 50000) {
+    score += 10;
+} else if (taxSaved > 25000) {
+    score += 5;
+}
 
-   // Limit between 0 and 100
-   score = Math.min(100, Math.max(0, Math.round(score)));
+score = Math.min(
+    100,
+    Math.max(0, Math.round(score))
+);
 
-   document.getElementById("taxScore").innerText =
-   score + " / 100";
+document.getElementById("taxScore").innerText =
+    score + " / 100";
         // =========================
         // INCOME CATEGORY
         // =========================
@@ -160,21 +162,7 @@ document.getElementById("newTax").innerHTML =
             incomeCategory =
                 "🔴 High Income Category";
         }
-
-        // =========================
-        // EFFECTIVE TAX RATE
-        // =========================
-
-        const effectiveTaxRate =
-            (
-                (
-                    Math.min(
-                        data.oldTax,
-                        data.newTax
-                    ) / income
-                ) * 100
-            ).toFixed(2);
-
+        
         // =========================
         // AI INSIGHTS
         // =========================
@@ -205,7 +193,7 @@ document.getElementById("newTax").innerHTML =
 
         insights +=
             "📈 Effective Tax Rate: " +
-            effectiveTaxRate +
+            displayTaxRate.toFixed(2) +
             "%";
             insights +=
             "<br><br>✅ All tax figures include 4% Health & Education Cess";
