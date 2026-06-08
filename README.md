@@ -21,6 +21,7 @@ The system uses rule-based intelligent decision logic to analyze user inputs and
 * Clear History Functionality
 * Secure Data Storage
 * Responsive Web Interface
+* PDF Report Generation
 
 ## Technologies Used
 
