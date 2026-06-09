@@ -15,7 +15,7 @@ The system uses rule-based intelligent decision logic to analyze user inputs and
 * Old Tax Regime Calculation
 * New Tax Regime Calculation
 * Tax Regime Comparison
-* Intelligent Tax Recommendations
+* AI Recommendations
 * Tax Score Generation
 * Tax Calculation History
 * Clear History Functionality
