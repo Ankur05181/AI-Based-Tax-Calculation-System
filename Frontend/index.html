@@ -77,15 +77,28 @@
                         placeholder="Enter Annual Income">
 
                 <input
-                        type="number"
-                        id="deduction80C"
-                        placeholder="80C Deduction">
+        type="number"
+        id="deduction80C"
+        max="150000"
+        min="0"
+        placeholder="80C Deduction">
 
-                <input
-                        type="number"
-                        id="deduction80D"
-                        placeholder="80D Deduction">
+<small class="hint-text">
+    Examples: PPF, EPF, ELSS, LIC, NSC, Tax Saving FD
+    (Max ₹1,50,000)
+</small>
 
+<input
+        type="number"
+        id="deduction80D"
+        max="25000"
+        min="0"
+        placeholder="80D Deduction">
+
+<small class="hint-text">
+    Examples: Health Insurance Premium,
+    Mediclaim Policy
+</small>
                 <input
                         type="number"
                         id="hraExemption"
@@ -98,8 +111,15 @@
                     Calculate Tax
 
                 </button>
+                <button
+        class="clear-btn"
+        onclick="clearForm()">
 
-            </div>
+        Clear
+
+    </button>
+
+    </div>
 
             <!-- =========================
                  TAX RESULTS
@@ -111,14 +131,14 @@
     <div class="regime-box">
 
         <div class="tax-card old-tax">
-            <h3>Old Regime</h3>
+            <h3 id="oldRegimeTitle">Old Regime</h3>
             <div id="oldTax">
                 ₹ 0.00
             </div>
         </div>
 
         <div class="tax-card new-tax">
-            <h3>New Regime</h3>
+            <h3 id="newRegimeTitle">New Regime</h3>
             <div id="newTax">
                 ₹ 0.00
             </div>

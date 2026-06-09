@@ -49,14 +49,28 @@ public class TaxService {
                 request.getIncome();
 
         double deduction80C =
-                request.getDeduction80C();
+        Math.max(
+                0,
+                Math.min(
+                        request.getDeduction80C(),
+                        150000
+                )
+        );
 
-        double deduction80D =
-                request.getDeduction80D();
+double deduction80D =
+        Math.max(
+                0,
+                Math.min(
+                        request.getDeduction80D(),
+                        25000
+                )
+        );
 
-        double hraExemption =
-                request.getHraExemption();
-
+double hraExemption =
+        Math.max(
+                0,
+                request.getHraExemption()
+        );
         // =========================
         // OLD REGIME
         // =========================

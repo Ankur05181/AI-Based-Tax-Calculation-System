@@ -152,6 +152,18 @@ body {
     border-color: #60a5fa;
     box-shadow: 0 0 10px rgba(96,165,250,0.3);
 }
+.hint-text {
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    margin-top: -10px;
+
+    margin-bottom: 8px;
+
+    display: block;
+}
 
 /* =========================
    BUTTON
@@ -175,7 +187,33 @@ body {
 .calc-btn:hover {
     transform: translateY(-2px);
 }
+.clear-btn {
 
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #64748b;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.clear-btn:hover {
+
+    background: #475569;
+
+    transform: translateY(-2px);
+}
 /* =========================
    RESULTS
 ========================= */
@@ -222,6 +260,8 @@ body {
 .tax-card h3 {
     margin-bottom: 15px;
     color: #cbd5e1;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .tax-card div {
