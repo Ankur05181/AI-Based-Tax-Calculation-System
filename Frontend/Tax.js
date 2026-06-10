@@ -615,7 +615,6 @@ let recommendation =
     .innerText
     .replace("AI Recommendation:", "")
     .replace(/[^\x00-\x7F]/g, "")
-    .replace(/\n\s*\n/g, "\n")
     .trim();
 
 const oldTaxValue =
@@ -777,7 +776,7 @@ doc.text(
 );
 
 const footerY =
-    180 + (lines.length * 6) + 15;
+    180 + (lines.length * 7) + 20;
 // =========================
 // FOOTER
 // =========================
