@@ -1,6 +1,9 @@
 package com.tax.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
@@ -10,9 +13,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Username is required")
+    @Pattern(
+        regexp = "^[A-Za-z][A-Za-z0-9_]{2,19}$",
+        message = "Username must start with a letter and be 3-20 characters long"
+    )
     @Column(nullable = false, unique = true)
     private String username;
 
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email format")
     @Column(nullable = false, unique = true)
     private String email;
 

@@ -8,11 +8,23 @@ async function register() {
         alert("Please fill all fields");
         return;
     }
-    if (password.length < 6) {
-    alert("Password must be at least 6 characters");
+    const usernameRegex = /^[A-Za-z][A-Za-z0-9_]{2,19}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!usernameRegex.test(username)) {
+    alert("Username must start with a letter and be 3-20 characters long.");
     return;
 }
 
+if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+}
+
+if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+}
     try {
 
         const response = await fetch("http://localhost:8080/auth/register", {
@@ -28,8 +40,13 @@ async function register() {
         });
 
         if (!response.ok) {
-            const error = await response.text();
-            alert("Error: " + error);
+            if (response.status === 400) {
+    alert("Invalid username or email format.");
+    return;
+}
+
+const error = await response.text();
+alert(error);
             return;
         }
 

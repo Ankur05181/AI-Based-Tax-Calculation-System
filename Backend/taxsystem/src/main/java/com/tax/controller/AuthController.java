@@ -1,5 +1,6 @@
 package com.tax.controller;
 
+import jakarta.validation.Valid;
 import com.tax.model.User;
 import com.tax.service.AuthService;
 
@@ -23,9 +24,9 @@ public class AuthController {
     // REGISTER
     // =========================
     @PostMapping("/register")
-    public ResponseEntity<?> register(
-            @RequestBody User user
-    ) {
+     public ResponseEntity<?> register(
+        @Valid @RequestBody User user
+   ){
 
         try {
 
